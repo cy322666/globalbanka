@@ -11,14 +11,16 @@
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic-ext">
 		<link rel="stylesheet" type="text/css" href='//fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic-ext'>
 
+        <meta charset="UTF-8" />
 		<style type="text/css">
-		* {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			text-rendering: geometricPrecision;
-			-webkit-font-smoothing: antialiased;
-		}
+		/** */
+        /*{*/
+		/*	-webkit-box-sizing: border-box;*/
+		/*	-moz-box-sizing: border-box;*/
+		/*	box-sizing: border-box;*/
+		/*	text-rendering: geometricPrecision;*/
+		/*	-webkit-font-smoothing: antialiased;*/
+		/*}*/
 		html, body {
 			padding: 0;
 			margin: 0;
@@ -105,11 +107,44 @@
 		<div class="cell-wrapper">
 			<!-- Название виджета -->
 			<div class="cell-wrapper__caption">Тестовый виджет</div>
+            <div class="dashboard-tile__item-top ">
+<!--                style="height: 118.95px;"-->
 
-			<!-- Главная цифра в виджете -->
-			<div class="cell-wrapper__data">
-				<div class="cell-wrapper__data__num" title="500"><a href="//amocrm.ru" target="_blank">500</a></div>
-			</div>
+                <h4 class="dashboard-tile__item-title  short ">Кристина. Задач в работе</h4>
+
+<!--                    <span class="dashboard-tile__item-title-txt">Кристина. Задач в работе</span>-->
+
+
+                    <span class="dashboard-tile__item-actions ">
+
+                        <span class="dashboard-tile__item-settings js-tile-convert-icon"></span>
+                    </span>
+                <div class="dashboard-tile__item-top-big-count">
+                    <div class="dashboard-tile__item-top-big-count-value js-resize-txt " data-font-size="45" data-font-size-min="20" data-font-proportion="45:170" style="font-size: 45px; height: 45px;">
+                    </div>
+                </div>
+                <div class="dashboard-tile__item-top-sum">0sdsd ₽</div>
+            </div>
+
+            <div class="dashboard-tile__item-bottom">
+                <div class="dashboard-tile__item-bottom-small-count  dashboard-tile__item-bottom-small-count_negative  js-resize-txt" data-font-size="20" data-font-size-min="13" data-font-proportion="20:170" style="font-size: 20px; height: 20px;">
+                    <svg style="height: 20px;">
+                        <text x="0" y="99%">-1</text>
+                    </svg>
+                </div>
+                <div class="dashboard-tile__item-bottom-subcaption">за сегодня</div>
+            </div>
+            <!-- Главная цифра в виджете -->
+<!--			<div class="cell-wrapper__data">-->
+<!--				<div class="cell-wrapper__data__num" title="500"><a href="//amocrm.ru" target="_blank">500</a></div>-->
+<!--			</div>-->
+
+<!--            <div class="dashboard-tile__item-chart-item">-->
+<!--                <div class="dashboard-tile__item-chart-item-title">Кристина</div>-->
+<!--                <div class="dashboard-tile__item-chart-item-count">15 м.;</div>-->
+<!--                <div class="dashboard-tile__item-chart-item-left dashboard-tile__item-chart-item-left_red">47 м.&nbsp;</div>-->
+<!--                <div class="dashboard-tile__item-chart-item-progress" style="width: 31.674842326559215%"></div>-->
+<!--            </div>-->
 
 			<!-- Футер виджета, например, сравнение с предыдущим периодом -->
 			<!-- Используйте классы .green и .red для того, чтобы показать успешный период или нет -->
