@@ -17,7 +17,7 @@ class CalculateAvgOut extends Command
      *
      * @var string
      */
-    protected $signature = 'messages:avg';
+    protected $signature = 'messages:avg {talk_id}';
 
     /**
      * The console command description.
@@ -32,16 +32,17 @@ class CalculateAvgOut extends Command
      */
     public function handle(): int
     {
+        dump($this->argument('talk_id'));
+
         $messages = Message::query()
             ->select(['id', 'msg_at', 'type', 'msg_time_at', 'msg_date_at', 'responsible_user_id'])
-            ->where('talk_id', 2124)
+            ->where('talk_id', $this->argument('talk_id'))
             ->whereBetween('msg_time_at', ['09:00:00', '21:00:00'])
             ->orderByDesc('msg_at')
             ->get();
 
         $responsible = $messages->first(
-            fn($message) => $message->type == 'out')
-                ->responsible_user_id;
+            fn($message) => $message->type == 'out')?->responsible_user_id;
 
         for ($outMsgInfo = [];
              $messages->count() > 0;
@@ -63,6 +64,7 @@ class CalculateAvgOut extends Command
                 'out_at' => $msgOut->msg_at ?? null,
                 'in_at'  => $msgIn->msg_at ?? null,
                 'time'   => static::getAvgMsg($msgIn, $msgOut)?->format('%s') ?? null,
+                'talk_id' => $this->argument('talk_id'),
                 'responsible_user_id' => $responsible,
             ];
         }

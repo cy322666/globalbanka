@@ -8,31 +8,23 @@
     <title>widget</title>
 </head>
 
-<body style="width: 500px">
+<body style="width: 600px">
     <table class="table table-dark table-striped">
         <thead>
         <tr>
             <th scope="col">Сотрудник</th>
             <th scope="col">Исходящих</th>
-            <th scope="col">Среднее</th>
+            <th scope="col">Среднее (сек)</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>{{ $staffs[0]['name'] }}</td>
-            <td>{{ $staffs[0]['count']}}</td>
-            <td>{{ $staffs[0]['avg'] }}</td>
-        </tr>
-        <tr>
-            <td>{{ $staffs[0]['count']}}</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <td>{{ $staffs[0]['avg'] }}</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        @foreach($staffs as $staff)
+            <tr>
+                <td>{{ $staff['name'] }}</td>
+                <td>{{ $staff['count']}}</td>
+                <td>{{ $staff['avg'] }}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 </body>

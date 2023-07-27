@@ -16,6 +16,7 @@ class Talk extends Model
         'in_at',
         'time',
         'status',
+        'talk_id',
         'responsible_user_id',
     ];
 }

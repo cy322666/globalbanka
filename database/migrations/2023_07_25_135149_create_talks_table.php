@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->integer('out_id')->nullable()->unique();
             $table->integer('in_id')->nullable()->unique();
+            $table->integer('talk_id');
             $table->dateTime('out_at')->nullable();
             $table->dateTime('in_at')->nullable();
             $table->integer('time')->nullable();
