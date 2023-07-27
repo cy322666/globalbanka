@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MessageController extends Controller
 {
@@ -20,6 +21,8 @@ class MessageController extends Controller
 
     public function widget(Request $request): Factory|View|Application
     {
+        Log::info(__METHOD__, $request->toArray());
+
         $staffs = Staff::query()
             ->orderByDesc('id')
             ->get();
