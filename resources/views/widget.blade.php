@@ -8,7 +8,7 @@
     <title>widget</title>
 </head>
 
-<body style="width: 600px">
+<body style="width: 1000px">
     <table class="table table-dark table-striped">
         <thead>
         <tr>
