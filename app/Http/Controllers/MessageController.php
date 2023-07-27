@@ -27,7 +27,7 @@ class MessageController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        if ($request->period) {
+        if ($request->period !== 'false') {
 
             $dayAt = match ($request->period) {
 
@@ -37,7 +37,7 @@ class MessageController extends Controller
             };
         }
 
-        if ($request->date_from) {
+        if ($request->date_from !== 'false') {
 
             $dayAt = Carbon::parse($request->date_from);
         }
