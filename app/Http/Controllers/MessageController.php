@@ -44,7 +44,7 @@ class MessageController extends Controller
 
         $dayAt = empty($dayAt) ? Carbon::now()->subDays(7) : $dayAt;
 
-        $dayTo = $request->date_to ? Carbon::parse($request->date_to) : Carbon::now();
+        $dayTo = $request->date_to !== 'false' ? Carbon::parse($request->date_to) : Carbon::now();
 
         $staffInfo = [];
 
