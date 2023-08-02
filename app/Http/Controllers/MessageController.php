@@ -22,7 +22,7 @@ class MessageController extends Controller
 
     public function widget(Request $request): Factory|View|Application
     {
-        Log::info(__METHOD__, $request->toArray());
+        Log::info('', $request->toArray());
 
         $staffs = Staff::query()
             ->orderByDesc('id')
@@ -48,7 +48,7 @@ class MessageController extends Controller
 
         $staffInfo = [];
 
-        Log::info(__METHOD__, [
+        Log::info('', [
             'at' => $dayAt->format('Y-m-d 00:00:00'),
             'to' => $dayTo->format('Y-m-d 00:00:00'),
         ]);
@@ -74,7 +74,7 @@ class MessageController extends Controller
                 $staffInfo[] = $info;
         }
 
-        Log::info(__METHOD__, $staffInfo);
+        Log::info('', $staffInfo);
 
         return view('widget', ['staffs' => $staffInfo]);
     }
