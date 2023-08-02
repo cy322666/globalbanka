@@ -59,6 +59,10 @@ class MessageController extends Controller
         } elseif ($request->period == 'month') {
 
             $dayTo = Carbon::now()->subMonth()->addDay();
+
+        } elseif ($request->period == 'week') {
+
+            $dayTo = Carbon::now()->addDays(7);
         }
 
         $staffInfo = [];
