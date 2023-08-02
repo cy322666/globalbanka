@@ -55,7 +55,7 @@ class MessageController extends Controller
                 $talks = Accept::query()
                     ->select(['time'])
                     ->where('responsible_user_id', $staff->staff_id)
-                    ->whereBetween('out_at', [
+                    ->whereBetween('lead_created_at', [
                         $dayAt->format('Y-m-d H:i:s'),
                         $dayTo->format('Y-m-d H:i:s'),
                     ])
