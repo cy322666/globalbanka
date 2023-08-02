@@ -76,7 +76,7 @@ class MessageController extends Controller
 
                 $talks = Accept::query()
                     ->select(['time'])
-//                    ->where('time', '<', 3600)
+                    ->where('time', '<', 1000)
                     ->where('responsible_user_id', $staff->staff_id)
                     ->whereBetween('time_at', [
                         '06:00:00',
