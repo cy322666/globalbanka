@@ -69,8 +69,6 @@ class MessageController extends Controller
                 $staffInfo[] = $info;
         }
 
-        dd($staffInfo);
-
         return view('widget', ['staffs' => $staffInfo]);
     }
 
