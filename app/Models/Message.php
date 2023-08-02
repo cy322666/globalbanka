@@ -23,5 +23,6 @@ class Message extends Model
         'msg_at',
         'msg_time_at',
         'msg_date_at',
+        'lead_created_at',
     ];
 }

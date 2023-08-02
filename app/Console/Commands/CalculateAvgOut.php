@@ -73,7 +73,14 @@ class CalculateAvgOut extends Command
 
             foreach ($outMsgInfo as $info) {
 
-                Talk::query()->create($info);
+                try {
+
+                    Talk::query()->create($info);
+
+                } catch (\Throwable $e) {
+
+                    continue;
+                }
             }
         }
 

@@ -44,14 +44,14 @@ class GetIncomingCalls extends Command
                     'filter' => [
                         'type' => 'incoming_chat_message',
                         'created_at' => [
-                            'from' => Carbon::now()->subDays(5)->timestamp,
+                            'from' => Carbon::now()->subDays(10)->timestamp,
                             'to'   => Carbon::now()->timestamp,
                         ]
                     ],
                 ]);
-dump('response');
-                if (empty($messages->_embedded->events[0])) dd('end', $messages);
 
+                if (empty($messages->_embedded->events[0])) dd('end', $messages);
+                dump('response');
             } catch (\Throwable $e) {
 
                 dump($e->getMessage());

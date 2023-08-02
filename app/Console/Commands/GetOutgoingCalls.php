@@ -44,7 +44,7 @@ class GetOutgoingCalls extends Command
                     'filter' => [
                         'type' => 'outgoing_chat_message',
                         'created_at' => [
-                            'from' => Carbon::now()->subDays(14)->timestamp,
+                            'from' => Carbon::now()->subDays(60)->timestamp,
                             'to'   => Carbon::now()->timestamp,
                         ]
                     ],
@@ -54,7 +54,7 @@ class GetOutgoingCalls extends Command
 
             } catch (\Throwable $e) {
 
-                dd($e->getMessage());
+                dump($e->getMessage());
             }
 
             foreach ($messages->_embedded->events as $message) {
@@ -84,7 +84,7 @@ class GetOutgoingCalls extends Command
 
 //                    continue;
 
-                    dd($e->getMessage().' '.$e->getLine().' => '.$i, $message);
+                    dump($e->getMessage().' '.$e->getLine().' => '.$i, $message);
                 }
             }
         }
