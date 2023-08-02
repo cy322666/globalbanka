@@ -15,6 +15,7 @@ class Accept extends Model
         'first_out',
         'talk_id',
         'time',
+        'time_at',
         'responsible_user_id',
     ];
 }

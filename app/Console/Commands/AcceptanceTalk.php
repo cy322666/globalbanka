@@ -77,6 +77,7 @@ class AcceptanceTalk extends Command
                 'lead_created_at' => $createdAt,
                 'first_out' => $firstOut->msg_at,
                 'talk_id'   => $firstOut->talk_id,
+                'time_at'   => Carbon::parse($createdAt)->format('H:i:s'),
                 'responsible_user_id' => $firstOut->responsible_user_id == 0 ? $lead->responsible_user_id : $firstOut->responsible_user_id,
             ]);
 

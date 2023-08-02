@@ -59,9 +59,9 @@ class MessageController extends Controller
                     ->select(['time'])
 //                    ->where('time', '<', 3600)
                     ->where('responsible_user_id', $staff->staff_id)
-                    ->whereBetween('lead_created_at', [
-                        $dayAt->addHours(3)->format('Y-m-d 00:00:00'),
-                        $dayTo->addHours(3)->format('Y-m-d 00:00:00'),
+                    ->whereBetween('time_at', [
+                        $dayAt->format('Y-m-d 06:00:00'),
+                        $dayTo->format('Y-m-d 18:00:00'),
                     ])
                     ->get();
 
