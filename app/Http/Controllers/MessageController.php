@@ -82,7 +82,7 @@ class MessageController extends Controller
                         $dayAt->format('Y-m-d 06:00:00'),
                         $dayTo->format('Y-m-d 18:00:00'),
                     ])
-                    ->dd();
+                    ->get();
 
                 $info = [
                     'name'  => $staff->name,
