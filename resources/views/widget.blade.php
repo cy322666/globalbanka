@@ -12,8 +12,8 @@
     <thead>
     <tr style="font-size:12px">
         <th scope="col">Сотрудник</th>
-        <th scope="col">Исходящих</th>
-        <th scope="col">Среднее (сек)</th>
+        <th scope="col">Заявок</th>
+        <th scope="col">Скорость взятия</th>
     </tr>
     </thead>
     <tbody>

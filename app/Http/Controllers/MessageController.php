@@ -63,7 +63,7 @@ class MessageController extends Controller
 
                 $info = [
                     'name'  => $staff->name,
-                    'avg'   => $talks->count() > 0 ? round($talks->sum('time') / $talks->count(), 1) : 0,
+                    'avg'   => $talks->count() > 0 ? round(($talks->sum('time') / $talks->count()) / 60, 1) : 0,
                     'count' => $talks->count(),
                 ];
 
