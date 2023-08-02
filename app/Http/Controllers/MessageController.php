@@ -44,13 +44,20 @@ class MessageController extends Controller
 
         $dayAt = empty($dayAt) ? Carbon::now()->subDays(7) : $dayAt;
 
-        $dayTo = $request->date_to !== 'false' ? Carbon::parse($request->date_to) : Carbon::now();
+        if ($request->date_to !== 'false') {
+
+            $dayTo = Carbon::parse($request->date_to);
+
+        } elseif ($request->period == 'yesterday') {
+
+            $dayTo = Carbon::now()->subDay();
+        }
 
         $staffInfo = [];
 
         Log::info('', [
-            'at' => $dayAt->format('Y-m-d 00:00:00'),
-            'to' => $dayTo->format('Y-m-d 00:00:00'),
+            'at' => $dayAt->format('Y-m-d H:i:s'),
+            'to' => $dayTo->format('Y-m-d H:i:s'),
         ]);
 
         foreach ($staffs as $staff) {
@@ -60,10 +67,14 @@ class MessageController extends Controller
 //                    ->where('time', '<', 3600)
                     ->where('responsible_user_id', $staff->staff_id)
                     ->whereBetween('time_at', [
+                        '06:00:00',
+                        '18:00:00',
+                    ])
+                    ->whereBetween('lead_created_at', [
                         $dayAt->format('Y-m-d 06:00:00'),
                         $dayTo->format('Y-m-d 18:00:00'),
                     ])
-                    ->get();
+                    ->dd();
 
                 $info = [
                     'name'  => $staff->name,
