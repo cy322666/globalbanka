@@ -32,8 +32,8 @@ class MessageController extends Controller
 
             $dayAt = match ($request->period) {
 
-                'day'   => Carbon::now()->subDay(),
-                'yesterday' => Carbon::now()->subDays(2),
+                'day'   => Carbon::now(),
+                'yesterday' => Carbon::now()->subDay(),
                 'month' => Carbon::now()->subMonth(),
                 default => Carbon::now()->subDays(7),
             };
