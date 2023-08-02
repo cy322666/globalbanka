@@ -37,9 +37,7 @@ class MessageController extends Controller
                 'month' => Carbon::now()->subMonth(),
                 default => Carbon::now()->subDays(7),
             };
-        }
-
-        if ($request->date_from !== 'false') {
+        } elseif ($request->date_from !== 'false') {
 
             $dayAt = Carbon::parse($request->date_from);
         }
@@ -70,6 +68,8 @@ class MessageController extends Controller
 
                 $staffInfo[] = $info;
         }
+
+        dd($staffInfo);
 
         return view('widget', ['staffs' => $staffInfo]);
     }

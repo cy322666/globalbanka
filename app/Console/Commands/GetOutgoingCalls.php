@@ -91,7 +91,7 @@ class GetOutgoingCalls extends Command
             }
         }
 
-        dd('kek');
+//        dd('kek');
 
         /*
 {#2585

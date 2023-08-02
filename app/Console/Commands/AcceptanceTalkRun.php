@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Message;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -30,6 +31,7 @@ class AcceptanceTalkRun extends Command
     public function handle()
     {
         $talks = Message::query()
+            ->where('lead_created_at', '>', Carbon::now()->subDay()->format('Y-m-d H:i:s'))
             ->select('talk_id')
             ->distinct()
             ->get();
