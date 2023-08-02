@@ -44,8 +44,8 @@ class GetOutgoingCalls extends Command
                     'filter' => [
                         'type' => 'outgoing_chat_message',
                         'created_at' => [
-                            'from' => Carbon::now()->subDays(100)->timestamp,
-                            'to'   => Carbon::now()->subDays(70)->timestamp,
+                            'from' => Carbon::now()->subDays(2)->timestamp,
+                            'to'   => Carbon::now()->timestamp,
                         ]
                     ],
                 ]);
