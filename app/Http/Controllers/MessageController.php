@@ -33,8 +33,9 @@ class MessageController extends Controller
             $dayAt = match ($request->period) {
 
                 'day'   => Carbon::now()->subDay(),
-                'week'  => Carbon::now()->subDays(7),
+                'yesterday' => Carbon::now()->subDays(2),
                 'month' => Carbon::now()->subMonth(),
+                default => Carbon::now()->subDays(7),
             };
         }
 
@@ -99,8 +100,9 @@ class MessageController extends Controller
             $dayAt = match ($request->period) {
 
                 'day'   => Carbon::now()->subDay(),
-                'week'  => Carbon::now()->subDays(7),
+                'yesterday' => Carbon::now()->subDays(2),
                 'month' => Carbon::now()->subMonth(),
+                default => Carbon::now()->subDays(7),
             };
         }
 
@@ -130,23 +132,24 @@ class MessageController extends Controller
                     ])
                     ->get();
 
+                $out = Message::query()
+                    ->select(['msg_at', 'sum'])
+                    ->where('responsible_user_id', $staff->staff_id)
+                    ->where('type', 'out')
+                    ->whereBetween('msg_at', [
+                        $dayAt->format('Y-m-d H:i:s'),
+                        $dayTo->format('Y-m-d H:i:s'),
+                    ]);
+
                 $info = [
                     'name'  => $staff->name,
-                    'avg'   => $talks->count() > 0 ? round($talks->sum('time') / $talks->count(), 1) : 0,
-                    'count' => Message::query()
-                        ->where('responsible_user_id', $staff->staff_id)
-                        ->where('type', 'out')
-                        ->count(),
+                    'avg'   => $talks->count() !== 0 ? round($talks->sum('time') / $talks->count(), 1) : 0,
+                    'count' => $out->count(),
                 ];
 
-            } else
-                $info = [
-                    'name'  => $staff->name,
-                    'count' => $staff->count_out,
-                    'avg'   => $staff->avg_out,
-                ];
+                $staffInfo[] = $info;
 
-            $staffInfo[] = $info;
+            }
         }
 
         return view('widget', ['staffs' => $staffInfo]);
