@@ -60,8 +60,8 @@ class MessageController extends Controller
 //                    ->where('time', '<', 3600)
                     ->where('responsible_user_id', $staff->staff_id)
                     ->whereBetween('lead_created_at', [
-                        $dayAt->format('Y-m-d 00:00:00'),
-                        $dayTo->format('Y-m-d 00:00:00'),
+                        $dayAt->addHours(3)->format('Y-m-d 00:00:00'),
+                        $dayTo->addHours(3)->format('Y-m-d 00:00:00'),
                     ])
                     ->get();
 
