@@ -48,11 +48,16 @@ class MessageController extends Controller
 
         $staffInfo = [];
 
+        Log::info(__METHOD__, [
+            'at' => $dayAt->format('Y-m-d 00:00:00'),
+            'to' => $dayTo->format('Y-m-d 00:00:00'),
+        ]);
+
         foreach ($staffs as $staff) {
 
                 $talks = Accept::query()
                     ->select(['time'])
-                    ->where('time', '<', 3600)
+//                    ->where('time', '<', 3600)
                     ->where('responsible_user_id', $staff->staff_id)
                     ->whereBetween('lead_created_at', [
                         $dayAt->format('Y-m-d 00:00:00'),
