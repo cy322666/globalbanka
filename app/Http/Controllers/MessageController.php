@@ -52,10 +52,6 @@ class MessageController extends Controller
 
         foreach ($staffs as $staff) {
 
-            if ($staff->avg_out == 0 &&
-                $staff->count_out == 0 &&
-                $staff->count_in == 0) {
-
                 $talks = Accept::query()
                     ->select(['time'])
                     ->where('responsible_user_id', $staff->staff_id)
@@ -68,20 +64,10 @@ class MessageController extends Controller
                 $info = [
                     'name'  => $staff->name,
                     'avg'   => $talks->count() > 0 ? round($talks->sum('time') / $talks->count(), 1) : 0,
-                    'count' => Message::query()
-                        ->where('responsible_user_id', $staff->staff_id)
-                        ->where('type', 'out')
-                        ->count(),
+                    'count' => $talks->count(),
                 ];
 
-            } else
-                $info = [
-                    'name'  => $staff->name,
-                    'count' => $staff->count_out,
-                    'avg'   => $staff->avg_out,
-                ];
-
-            $staffInfo[] = $info;
+                $staffInfo[] = $info;
         }
 
         return view('widget', ['staffs' => $staffInfo]);
