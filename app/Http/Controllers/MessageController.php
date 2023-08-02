@@ -69,6 +69,8 @@ class MessageController extends Controller
                 $staffInfo[] = $info;
         }
 
+        Log::info(__METHOD__, $staffInfo);
+
         return view('widget', ['staffs' => $staffInfo]);
     }
 
