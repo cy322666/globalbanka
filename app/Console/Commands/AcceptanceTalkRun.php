@@ -31,7 +31,7 @@ class AcceptanceTalkRun extends Command
     public function handle()
     {
         $talks = Message::query()
-//            ->where('lead_created_at', '>', Carbon::now()->subDay()->format('Y-m-d H:i:s'))
+            ->where('lead_created_at', '>', Carbon::now()->subDay()->format('Y-m-d H:i:s'))
             ->select('talk_id')
             ->distinct()
             ->get();

@@ -44,7 +44,7 @@ class GetIncomingCalls extends Command
                     'filter' => [
                         'type' => 'incoming_chat_message',
                         'created_at' => [
-                            'from' => Carbon::now()->subDays(10)->timestamp,
+                            'from' => Carbon::now()->subDay()->timestamp,
                             'to'   => Carbon::now()->timestamp,
                         ]
                     ],

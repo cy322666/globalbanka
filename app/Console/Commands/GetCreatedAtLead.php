@@ -28,6 +28,7 @@ class GetCreatedAtLead extends Command
      * Execute the console command.
      *
      * @return int
+     * @throws \Exception
      */
     public function handle()
     {
@@ -42,8 +43,6 @@ class GetCreatedAtLead extends Command
             ->get();
 
         foreach ($leadIds as $leadId) {
-
-            dump(Carbon::now()->format('H:i:s:ss'));
 
             $createdAt = $amoApi->service->leads()->find($leadId->element_id)->created_at;
 
