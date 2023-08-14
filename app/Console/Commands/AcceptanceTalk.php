@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Services\amoCRM\Client;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class AcceptanceTalk extends Command
 {
@@ -83,7 +84,7 @@ class AcceptanceTalk extends Command
 
         } catch (\Throwable $e) {
 
-            dump($e->getMessage());
+            Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
         }
         return 1;
     }

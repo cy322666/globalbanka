@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Services\amoCRM\Client;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class GetOutgoingCalls extends Command
 {
@@ -54,14 +55,12 @@ class GetOutgoingCalls extends Command
 
             } catch (\Throwable $e) {
 
-                dump($e->getMessage());
+                Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
             }
 
             foreach ($messages->_embedded->events as $message) {
 
                 try {
-
-                    dump(Carbon::parse($message->created_at)->format('Y-m-d H:i:s'));
 
                     if (!$message->created_by == 0 && $message->type !== 'talk_created')
 

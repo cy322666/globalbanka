@@ -32,8 +32,6 @@ class CalculateAvgOut extends Command
      */
     public function handle(): int
     {
-        dump($this->argument('talk_id'));
-
         $messages = Message::query()
             ->select(['id', 'msg_at', 'type', 'msg_time_at', 'msg_date_at', 'responsible_user_id'])
             ->where('talk_id', $this->argument('talk_id'))

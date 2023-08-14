@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Services\amoCRM\Client;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class GetIncomingCalls extends Command
 {
@@ -51,10 +52,10 @@ class GetIncomingCalls extends Command
                 ]);
 
                 if (empty($messages->_embedded->events[0])) dd('end', $messages);
-                dump('response');
+
             } catch (\Throwable $e) {
 
-                dump($e->getMessage());
+                Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
             }
 
             foreach ($messages->_embedded->events as $message) {
@@ -78,16 +79,14 @@ class GetIncomingCalls extends Command
                         ]);
 
                     else
-                        dump($message->created_by, $message->type);
+                        Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
 
                 } catch (\Throwable $e) {
 
-                    dump($e->getMessage().' '.$e->getLine().' => '.$i, $message);
+                    Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
                 }
             }
         }
-
-        dd('kek');
 
         /*
 {#2585
