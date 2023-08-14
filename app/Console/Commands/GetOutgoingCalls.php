@@ -85,7 +85,7 @@ class GetOutgoingCalls extends Command
 
 //                    continue;
 
-//                    dump($e->getMessage().' '.$e->getLine().' => '.$i);
+                    Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
                 }
             }
         }
