@@ -51,7 +51,7 @@ class GetOutgoingCalls extends Command
                     ],
                 ]);
 
-                if (empty($messages->_embedded->events[0])) dd('end', $messages);
+                if (empty($messages->_embedded->events[0])) exit;
 
             } catch (\Throwable $e) {
 
