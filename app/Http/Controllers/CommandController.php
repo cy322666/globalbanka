@@ -30,4 +30,10 @@ class CommandController extends Controller
     {
         Artisan::call('accept:run');
     }
+
+    //раз в 10
+    public function calls()
+    {
+        Artisan::call('messages:call-del');
+    }
 }
