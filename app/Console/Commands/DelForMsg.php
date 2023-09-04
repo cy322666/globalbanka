@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Services\amoCRM\Client;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class DelForMsg extends Command
 {
@@ -34,29 +35,29 @@ class DelForMsg extends Command
     {
         $amoApi = (new Client(account: Account::query()->first()))->init();
 
-        $msgs = Message::query()
+        $msgs = DB::table('messages')
+            ->select(['element_id'])
+            ->distinct()
             ->where('element_type', 'lead')
-            ->where('created_at', '>', Carbon::now()->subMinutes(20)->format('Y-m-d H:i:s'))
-            ->distinct('element_id')
+//            ->where('created_at', '>', Carbon::now()->subMinutes(20)->format('Y-m-d H:i:s'))
             ->get();
 
-        dump('count '. $msgs->count());
-
         foreach ($msgs as $msg) {
+            try {
 
-            dump('msg '.$msg->id);
+                $lead = $amoApi->service
+                    ->leads()
+                    ->find($msg->element_id);
 
-            $lead = $amoApi->service
-                ->leads()
-                ->find($msg->element_id);
+                if ($lead->cf('Канал связи')->getValue() == 'Звонок') {
 
-            if ($lead->cf('Канал связи')->getValue() == 'Звонок') {
+                    Accept::query()
+                        ->where('lead_id', $msg->element_id)
+                        ->delete();
+                }
 
-                dump('have call');
+            } catch (\Throwable $e){
 
-                Accept::query()
-                    ->where('lead_id', $msg->element_id)
-                    ->delete();
             }
         }
         return Command::SUCCESS;
