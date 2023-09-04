@@ -28,3 +28,5 @@ Route::get('created', [CommandController::class, 'created']);
 Route::get('accept', [CommandController::class, 'accept']);
 
 Route::get('calls', [CommandController::class, 'calls']);
+
+Route::get('msg', [CommandController::class, 'msg']);

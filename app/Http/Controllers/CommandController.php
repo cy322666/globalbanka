@@ -36,4 +36,10 @@ class CommandController extends Controller
     {
         Artisan::call('messages:call-del');
     }
+
+    //раз в 15
+    public function msg()
+    {
+        Artisan::call('messages:msg-del');
+    }
 }

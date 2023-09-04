@@ -35,7 +35,7 @@ class DelCallTalks extends Command
         $amoApi = (new Client(account: Account::query()->first()))->init();
 
         $talks = Talk::query()
-            ->where('status', 0)
+            ->where('status', 1)
             ->get();
 
         foreach ($talks as $talk) {
@@ -55,6 +55,11 @@ class DelCallTalks extends Command
 
                     $talk->status = 1;
                     $talk->save();
+
+                    Accept::query()
+                        ->where('talk_id', $talk->talk_id)
+                        ->delete();
+
                 } else {
 
                     $talk->status = 5;
@@ -65,17 +70,6 @@ class DelCallTalks extends Command
                 $talk->status = 4;
                 $talk->save();
             }
-        }
-
-        $talks = Talk::query()
-            ->where('status', 1)
-            ->get();
-
-        foreach ($talks as $talk) {
-
-            Accept::query()
-                ->where('talk_id', $talk->talk_id)
-                ->delete();
         }
 
         return Command::SUCCESS;
