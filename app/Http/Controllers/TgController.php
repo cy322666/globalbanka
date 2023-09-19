@@ -21,9 +21,8 @@ class TgController extends Controller
         $lead = $amoApi->service->leads()->find($leadId);
 
         Telegram::send(implode("\n", [
-            '*Успешная сделка!* ',
+            '*Новая сделка!* ',
             '-----------------------',
-            '*Сделка*',
             'Название : '.$lead->name,
             '*Клиент* ',
             'Имя : '.$lead->contact->name ?? '-',
