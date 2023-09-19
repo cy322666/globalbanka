@@ -6,11 +6,14 @@ use App\Models\Account;
 use App\Services\amoCRM\Client;
 use App\Services\Telegram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TgController extends Controller
 {
     public function hook(Request $request)
     {
+        Log::info(__METHOD__, $request->toArray());
+
         $leadId = $request->toArray()['leads']['add'][0]['id'];
 
         $amoApi = (new Client(account: Account::query()->first()))->init();
