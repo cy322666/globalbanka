@@ -32,4 +32,4 @@ Route::get('calls', [CommandController::class, 'calls']);
 
 Route::get('msg', [CommandController::class, 'msg']);
 
-Route::get('tg/create', [TgController::class, 'hook']);
+Route::post('tg/create', [TgController::class, 'hook']);
