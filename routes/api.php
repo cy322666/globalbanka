@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommandController;
+use App\Http\Controllers\TgController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,5 @@ Route::get('accept', [CommandController::class, 'accept']);
 Route::get('calls', [CommandController::class, 'calls']);
 
 Route::get('msg', [CommandController::class, 'msg']);
+
+Route::get('tg/create', [TgController::class, 'hook']);
