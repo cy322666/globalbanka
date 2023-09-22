@@ -31,7 +31,7 @@ class TgController extends Controller
         ]), env('TG_CHAT'), env('TG_TOKEN'), [
             "text" => "Перейти в сделку",
             "url"  => "https://globalbanka1.amocrm.ru/leads/detail/".$leadId
-        ], false
+        ], true
         );
     }
 }
