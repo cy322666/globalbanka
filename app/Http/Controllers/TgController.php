@@ -24,8 +24,9 @@ class TgController extends Controller
             '*Новая сделка!* ',
             '-----------------------',
             'Название : '.$lead->name,
-            '*Клиент* ',
-            'Имя : '.$lead->contact->name ?? '-',
+            'Воронка : '.$lead->pipeline_id == 6716018 ? 'TipsForTrips' : 'Globalbanka',
+//            '*Клиент* ',
+//            'Имя : '.$lead->contact->name ?? '-',
 //            'Почта контакта : '.$lead->contact?->cf('Email')->getValue() ?? '-',
         ]), env('TG_CHAT'), env('TG_TOKEN'), [
             "text" => "Перейти в сделку",
