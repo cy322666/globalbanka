@@ -7,6 +7,7 @@ use App\Models\Account;
 use App\Models\Message;
 use App\Models\Talk;
 use App\Services\amoCRM\Client;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class DelCallTalks extends Command
@@ -43,6 +44,7 @@ class DelCallTalks extends Command
             $msg = Message::query()
                 ->where('talk_id', $talk->talk_id)
                 ->where('element_type', 'lead')
+                ->where('created_at', '>', Carbon::now()->subMinutes(20)->format('Y-m-d H:i:s'))
                 ->first();
 
             if ($msg) {

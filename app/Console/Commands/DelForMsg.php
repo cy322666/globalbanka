@@ -39,7 +39,7 @@ class DelForMsg extends Command
             ->select(['element_id'])
             ->distinct()
             ->where('element_type', 'lead')
-//            ->where('created_at', '>', Carbon::now()->subMinutes(20)->format('Y-m-d H:i:s'))
+            ->where('created_at', '>', Carbon::now()->subMinutes(20)->format('Y-m-d H:i:s'))
             ->get();
 
         foreach ($msgs as $msg) {

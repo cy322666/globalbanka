@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Artisan;
 class CommandController extends Controller
 {
     //раз в 10
+    //работает ок
     public function incoming()
     {
         Artisan::call('messages:incoming');
     }
 
     //раз в 10
+    //работает ок
     public function outgoing()
     {
         Artisan::call('messages:outgoing');
