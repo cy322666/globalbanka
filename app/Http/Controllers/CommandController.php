@@ -22,24 +22,28 @@ class CommandController extends Controller
     }
 
     //раз в 15
+    //не работало, чекать
     public function created()
     {
         Artisan::call('leads:created_at');
     }
 
     //раз в 20
+    //работает ок
     public function accept()
     {
         Artisan::call('accept:run');
     }
 
     //раз в 10
+    //фиксил
     public function calls()
     {
         Artisan::call('messages:call-del');
     }
 
     //раз в 15
+    //фиксил
     public function msg()
     {
         Artisan::call('messages:msg-del');
