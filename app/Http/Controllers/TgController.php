@@ -14,7 +14,7 @@ class TgController extends Controller
     {
         Log::info(__METHOD__, $request->toArray());
 
-        $leadId = $request->toArray()['leads']['add'][0]['id'];
+        $leadId = $request->toArray()['leads']['add'][0]['id'] ?? $request->toArray()['leads']['status'][0]['id'];
 
         $amoApi = (new Client(account: Account::query()->first()))->init();
 
