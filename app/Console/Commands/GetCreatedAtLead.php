@@ -57,8 +57,6 @@ class GetCreatedAtLead extends Command
                         'lead_created_at'      => Carbon::parse($createdAt)->format('Y-m-d H:i:s'),
                         'lead_created_at_time' => Carbon::parse($createdAt)->format('H:i:s'),
                     ]);
-
-                sleep(1);
             } catch (\Throwable $e) {}
         }
 
