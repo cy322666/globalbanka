@@ -103,7 +103,7 @@ abstract class Leads
 
         } catch (\Exception $exception) {
 
-            Log::error(__METHOD__. ' : ошибка обновления '.$exception->getMessage(). ' , сделка : '.$lead->id);
+//            Log::error(__METHOD__. ' : ошибка обновления '.$exception->getMessage(). ' , сделка : '.$lead->id);
         }
     }
 
@@ -117,9 +117,9 @@ abstract class Leads
 
         } catch (\Exception $exception) {
 
-            sleep(2);
+//            sleep(2);
 
-            Log::error(__METHOD__. ' : '.$exception->getMessage(). ' , сделка : '.$id);
+//            Log::error(__METHOD__. ' : '.$exception->getMessage(). ' , сделка : '.$id);
         }
     }
 }

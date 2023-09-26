@@ -55,7 +55,7 @@ class GetIncomingCalls extends Command
 
             } catch (\Throwable $e) {
 
-                Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
+//                Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
             }
 
             foreach ($messages->_embedded->events as $message) {
@@ -78,8 +78,8 @@ class GetIncomingCalls extends Command
                             'msg_time_at'     => Carbon::parse($message->created_at)->format('H:i:s'),
                         ]);
 
-                    else
-                        Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
+//                    else
+//                        Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
 
                 } catch (\Throwable $e) {
 

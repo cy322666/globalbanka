@@ -84,7 +84,7 @@ class AcceptanceTalk extends Command
 
         } catch (\Throwable $e) {
 
-            Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
+//            Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
         }
         return 1;
     }
