@@ -55,7 +55,7 @@ class GetOutgoingCalls extends Command
 
             } catch (\Throwable $e) {
 
-                Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
+//                Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
             }
 
             foreach ($messages->_embedded->events as $message) {
@@ -85,7 +85,7 @@ class GetOutgoingCalls extends Command
 
 //                    continue;
 
-                    Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
+//                    Log::error(__METHOD__, [$e->getMessage().' '.$e->getFile().' '.$e->getLine()]);
                 }
             }
         }
