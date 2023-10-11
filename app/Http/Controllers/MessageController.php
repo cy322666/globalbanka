@@ -35,6 +35,7 @@ class MessageController extends Controller
                 'day'   => Carbon::now(),
                 'yesterday' => Carbon::now()->subDay(),
                 'month' => Carbon::now()->subMonth(),
+                'custom' => Carbon::parse($request->date_from),
                 default => Carbon::now()->subDays(7),
             };
         } elseif ($request->date_from !== 'false') {
@@ -63,6 +64,10 @@ class MessageController extends Controller
         } elseif ($request->period == 'week') {
 
             $dayTo = Carbon::now()->addDays(7);
+
+        } elseif ($request->period == 'custom') {
+
+            $dayTo = Carbon::parse($request->date_to);
         }
 
         $staffInfo = [];
